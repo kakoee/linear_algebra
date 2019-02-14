@@ -80,13 +80,21 @@ class Vector(object):
             
        
     def is_parallel(self,v):
-        # two vectors are parallel if the angle between them is 0 or 180
+        # two vectors are parallel if the angle between them is 0 or 180. in other words if one of them is the time scalar of the other one
         angle = self.angle_with(v,in_degree=True)
         if(angle<1 or angle >=179):
             return True
         else:
             return False
         
+    def is_orthagonal(self,v):
+        # two vectors are parallel if the angle between them is 90 degree. in other words if their dot product is 0
+        dot = self.dot(v)
+        if(dot<0.01):
+            return True
+        else:
+            return False
+
         
     
     
@@ -114,5 +122,9 @@ b= Vector([-1,-1])
 print(a.angle_with(b,1))
 print(a.is_parallel(b))
 
+a= Vector([1,0])
+b= Vector([0,5])
 
+print(a.angle_with(b,1))
+print(a.is_orthagonal(b))
 
