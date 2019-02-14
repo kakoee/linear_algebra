@@ -95,6 +95,17 @@ class Vector(object):
         else:
             return False
 
+    def cross_product_3(self,v):
+        if(len(self.coordinates)!=3 or len(v.coordinates)!=3):
+            print('cross product is only valid for 3 dimensional vectors')
+            return
+        
+        # cross product of 2 3-dim vectors: v x w  = [y1z2-y2z1 , - (x1z2 - x2z1) , x1y2 - x2y1 ] 
+        x1,y1,z1 = self.coordinates[0], self.coordinates[1], self.coordinates[2]
+        x2,y2,z2 = v.coordinates[0], v.coordinates[1], v.coordinates[2]            
+        
+        return Vector ([y1*z2-y2*z1 , - (x1*z2 - x2*z1) , x1*y2 - x2*y1 ])
+        
         
     
     
@@ -127,4 +138,9 @@ b= Vector([0,5])
 
 print(a.angle_with(b,1))
 print(a.is_orthogonal(b))
+
+a1 = Vector([5,3,-2])
+a2 = Vector([-1,0,3])
+
+print(a1.cross_product_3(a2))
 
