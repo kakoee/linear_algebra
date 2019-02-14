@@ -87,7 +87,7 @@ class Vector(object):
         else:
             return False
         
-    def is_orthagonal(self,v):
+    def is_orthogonal(self,v):
         # two vectors are parallel if the angle between them is 90 degree. in other words if their dot product is 0
         dot = self.dot(v)
         if(dot<0.01):
@@ -126,5 +126,5 @@ a= Vector([1,0])
 b= Vector([0,5])
 
 print(a.angle_with(b,1))
-print(a.is_orthagonal(b))
+print(a.is_orthogonal(b))
 
