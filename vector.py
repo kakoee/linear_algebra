@@ -88,7 +88,7 @@ class Vector(object):
             return False
         
     def is_orthogonal(self,v):
-        # two vectors are parallel if the angle between them is 90 degree. in other words if their dot product is 0
+        # two vectors are orthogonal if the angle between them is 90 degree. in other words if their dot product is 0
         dot = self.dot(v)
         if(dot<0.01):
             return True
@@ -108,39 +108,39 @@ class Vector(object):
         
         
     
+def test_v():
+    a = Vector([8.218,-9.341])
+    b = Vector([-1.129,2.111])
     
-a = Vector([8.218,-9.341])
-b = Vector([-1.129,2.111])
-
-
-print (a+b)
-
-a = Vector([-0.221,7.437])
-
-print( a.magnit())
-print(a.norm().magnit())
-
-a = Vector([8,9])
-b = Vector([2,-2])
-
-print(a.dot(b))
-
-#a = Vector([0,0])
-#print(a.norm())
-a= Vector([1,1])
-b= Vector([-1,-1])
-
-print(a.angle_with(b,1))
-print(a.is_parallel(b))
-
-a= Vector([1,0])
-b= Vector([0,5])
-
-print(a.angle_with(b,1))
-print(a.is_orthogonal(b))
-
-a1 = Vector([5,3,-2])
-a2 = Vector([-1,0,3])
-
-print(a1.cross_product_3(a2))
+    
+    print (a+b)
+    
+    a = Vector([-0.221,7.437])
+    
+    print( a.magnit())
+    print(a.norm().magnit())
+    
+    a = Vector([8,9])
+    b = Vector([2,-2])
+    
+    print(a.dot(b))
+    
+    #a = Vector([0,0])
+    #print(a.norm())
+    a= Vector([1,1])
+    b= Vector([-1,-1])
+    
+    print(a.angle_with(b,1))
+    print(a.is_parallel(b))
+    
+    a= Vector([1,0])
+    b= Vector([0,5])
+    
+    print(a.angle_with(b,1))
+    print(a.is_orthogonal(b))
+    
+    a1 = Vector([5,3,-2])
+    a2 = Vector([-1,0,3])
+    
+    print(a1.cross_product_3(a2))
 

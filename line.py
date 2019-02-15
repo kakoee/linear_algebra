@@ -89,6 +89,19 @@ class Line(object):
         return output
 
 
+    def is_parallel(self,l):
+        v1 = self.normal_vector
+        v2 = l.normal_vector
+        par = v1.is_parallel(v2)
+        return par
+    
+    
+    def is_equal(self,l):
+        prl = self.is_parallel(l)
+        if(not prl): return False
+        
+        
+
     @staticmethod
     def first_nonzero_index(iterable):
         for k, item in enumerate(iterable):
