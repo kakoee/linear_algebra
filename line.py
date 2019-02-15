@@ -99,12 +99,33 @@ class Line(object):
     def __eq__(self,l):
         prl = self.is_parallel(l)
         if(not prl): return False
+        # lines are equal if the line connecting two points (like basepoints) of two lines is orthogonal to one of the lines normal vector.since normal vector is orthogonal to each of lines if lines are parallel
         basepoint1 = self.basepoint
         basepoint2 = l.basepoint
         
         line_connection = basepoint1.minus(basepoint2)
         
         return line_connection.is_orthogonal(self.normal_vector)
+        
+    def intersection_with(self,l):
+        prl = self.is_parallel(l)
+        if(prl):
+            eq = (self == l)
+            if(eq): return self
+            return None
+        
+        # lines: Ax+By= K1, Cx + Dy = K2
+        # the intersection is X= (D*K1 - B*K2)/(A*D - B*C) ; Y = (-C*K1 + A* K2) / (A*D - B*C)
+        
+        A, B = self.normal_vector.coordinates
+        C, D = l.normal_vector.coordinates
+        K1 = self.constant_term
+        K2 = l.constant_term
+  
+        x_numerator = D*K1 - B*K2
+        y_numerator = -C*K1 + A*K2
+        divi = 1 / (A*D - B*C)
+        return Vector([x_numerator * divi, y_numerator* divi])
         
 
     @staticmethod
