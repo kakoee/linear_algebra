@@ -96,10 +96,15 @@ class Line(object):
         return par
     
     
-    def is_equal(self,l):
+    def __eq__(self,l):
         prl = self.is_parallel(l)
         if(not prl): return False
+        basepoint1 = self.basepoint
+        basepoint2 = l.basepoint
         
+        line_connection = basepoint1.minus(basepoint2)
+        
+        return line_connection.is_orthogonal(self.normal_vector)
         
 
     @staticmethod
